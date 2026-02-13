@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { VictoryBar, VictoryChart, VictoryGroup, VictoryTheme } from 'victory'
 
 export function Bar() {
@@ -61,9 +61,23 @@ export function Bar() {
     if (error) return <p>Error: {error}</p>
     if (!apiData.length) return <p>No data</p>
     return (
-        <div>
-            <h2>Victory Line Chart Example</h2>
-            <div className="align-flex">
+        <Fragment>
+            {/*<h2>Victory Line Chart Example</h2>*/}
+            <VictoryChart
+                theme={VictoryTheme.clean}
+                domainPadding={{x: 0}}
+            >
+                <VictoryGroup
+                    offset={8}
+                    style={{data: {width: 5}}}
+                >
+                    <VictoryBar data={data1}/>
+                    <VictoryBar data={data2}/>
+                    <VictoryBar data={data3}/>
+                    <VictoryBar data={data4}/>
+                </VictoryGroup>
+            </VictoryChart>
+            {/*<div className="align-flex">
                 <VictoryChart
                     theme={VictoryTheme.clean}
                     domainPadding={{x: 20}}
@@ -112,7 +126,7 @@ export function Bar() {
                 >
                     <VictoryBar data={data4}/>
                 </VictoryChart>
-            </div>
-        </div>
+            </div>*/}
+        </Fragment>
     )
 }
